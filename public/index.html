@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Alpha AI</title><meta name="description" content="Your creative AI workspace."><meta name="theme-color" content="#101323">
+<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="icon-192.png"><link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+<div id="app">
+ <aside id="side">
+  <div class="brand"><img src="icon.svg" alt="" class="brand-icon"><div><b>alpha</b><small>YOUR AI WORKSPACE</small></div><button id="sideClose" class="icon-btn mobile-only" aria-label="Close menu">×</button></div>
+  <button id="newChat" class="new-chat"><span>＋</span> New conversation</button>
+  <label class="searchbox"><span>⌕</span><input id="search" placeholder="Search conversations" aria-label="Search chats"></label>
+  <div class="section-label">RECENT</div><nav id="list" aria-label="Conversations"></nav>
+  <div class="side-bottom"><button id="pluginsBtn" class="side-action"><span>▦</span> Plugins <i id="pluginCount">2 active</i></button><button id="filesBtn" class="side-action"><span>▤</span> My files</button><button id="setBtn" class="side-action"><span>⚙</span> Settings</button><div class="profile"><div class="profile-avatar">A</div><div><b>Alpha workspace</b><small>Personal assistant</small></div><span class="online-dot"></span></div></div>
+ </aside>
+ <main>
+  <header><button id="menu" class="icon-btn" aria-label="Open menu">☰</button><div class="top-title"><span class="status-pulse"></span><b>Alpha AI</b><small>Workspace</small></div>
+   <div class="top-controls"><label class="model-wrap"><span>✧</span><input id="model" list="models" aria-label="AI model" placeholder="Choose model"><datalist id="models"></datalist></label>
+   <select id="mode" aria-label="Agent mode"><option value="off">Chat</option><option value="ask">Agent · Ask first</option><option value="auto">Agent · Auto-run</option></select><span id="net" class="net" title="Connection"></span><button id="export" class="icon-btn" title="Export conversation" aria-label="Export">⇩</button><button id="theme" class="icon-btn" title="Toggle theme" aria-label="Toggle theme">◐</button></div>
+  </header>
+  <section id="msgs" aria-live="polite"></section>
+  <div class="composer-shell"><div id="attachmentTray" class="attachment-tray" hidden></div><form id="composer" autocomplete="off"><button type="button" id="attach" class="tool-btn" aria-label="Attach files" title="Attach files">＋</button><input type="file" id="file" hidden multiple accept=".txt,.md,.csv,.json,.js,.ts,.jsx,.tsx,.html,.css,.py,.java,.c,.cpp,.xml,.yaml,.yml,.log,.sql"><textarea id="input" rows="1" placeholder="Message Alpha…" aria-label="Message"></textarea><button type="button" id="mic" class="tool-btn" aria-label="Dictate" title="Voice input">♩</button><button id="send" type="submit" class="send-btn" aria-label="Send message">↑</button></form><div class="composer-hint">Alpha can make mistakes. Check important information.</div></div>
+ </main>
+ <aside id="drawer" hidden><div class="drawer-head"><div><small>WORKSPACE</small><b>My files</b></div><button id="closeFiles" class="icon-btn" aria-label="Close files">×</button></div><div id="files"></div></aside>
+</div>
+<dialog id="settings" class="modal"><form method="dialog"><div class="modal-head"><div><small>PREFERENCES</small><h2>Settings</h2></div><button class="icon-btn" value="cancel" aria-label="Close">×</button></div><label>Server access key<input id="key" type="password" placeholder="Only if your server requires one"></label><label>Custom instructions<textarea id="sys" rows="4" placeholder="Tell Alpha how you like to work"></textarea></label><p id="credits" class="mute"></p><div class="modal-foot"><button type="button" id="clearAll" class="danger">Delete all chats</button><button value="ok" class="primary">Save changes</button></div></form></dialog>
+<dialog id="plugins" class="modal plugin-modal"><form method="dialog"><div class="modal-head"><div><small>EXTEND YOUR WORKSPACE</small><h2>Plugin library</h2><p class="modal-sub">Turn on the tools you want within Alpha.</p></div><button class="icon-btn" value="cancel" aria-label="Close">×</button></div><div id="pluginList" class="plugin-list"></div><section class="marketplace"><h3>＋ Custom plugin marketplace</h3><p class="mute">Add an HTTPS shortcut to an external tool. Custom entries open in a new tab and do not execute third-party code inside Alpha.</p><label>Plugin name<input id="customPluginName" placeholder="My tool"></label><label>Description<input id="customPluginDesc" placeholder="What this tool does"></label><label>Website URL<input id="customPluginUrl" type="url" placeholder="https://example.com"></label><button type="button" class="primary" id="addCustomPlugin">Add to my marketplace</button><div id="customPluginList"></div></section><div id="pluginWork" class="plugin-work" hidden></div><div class="modal-foot"><span class="mute">More integrations can be added by the server owner.</span><button value="ok" class="primary">Done</button></div></form></dialog>
+<script src="app.js"></script>
+</body></html>
